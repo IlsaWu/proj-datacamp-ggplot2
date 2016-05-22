@@ -20,3 +20,9 @@ ggplot(mtcars, aes(x = wt, y = mpg, fill = cyl)) +geom_point(shape=24,col="yello
 ggplot(mtcars, aes(x = wt, y = mpg, fill = cyl)) +geom_text(label="x",col="red",size=10)
 ggplot(mtcars, aes(x = wt, y = mpg, label = cyl)) +geom_text(col="red",size=10)
 
+ggplot(mtcars,aes(x=mpg,y=qsec,col=as.factor(cyl)))+geom_point()
+ggplot(mtcars,aes(x=mpg,y=qsec,col=factor(cyl)))+geom_point()
+ggplot(mtcars,aes(x=mpg,y=qsec,col=as.factor(cyl),shape=as.factor(am)))+geom_point()
+ggplot(mtcars,aes(x=mpg,y=qsec,col=factor(cyl),shape=factor(am)))+geom_point()
+# ggplot(mtcars,aes(x=mpg,y=qsec,col=as.factor(cyl)))+geom_point(shape=as.factor(am))
+ggplot(mtcars,aes(x=mpg,y=qsec,col=as.factor(cyl),shape=as.factor(am),size=(hp/wt)))+geom_point()
