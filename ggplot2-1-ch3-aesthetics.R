@@ -21,3 +21,22 @@ library(ggplot2)
 ggplot(mtcars2,aes(x=cyl,y=mpg))+geom_point()
 ggplot(mtcars2,aes(x=wt,y=mpg,col=cyl))+geom_point()
 ggplot(mtcars2, aes(x=wt,y=mpg,col=cyl))+geom_point(shape=1,size=4)
+
+ggplot(mtcars, aes(x = wt, y = mpg, fill = cyl)) +
+  geom_point()
+
+ggplot(mtcars, aes(x = wt, y = mpg, fill=cyl)) +
+  geom_point(shape=16,size=6,alpha=0.6)
+
+# Map cyl to size
+ggplot(mtcars,aes(x=wt,y=mpg,size=cyl))+geom_point()       
+# Map cyl to alpha
+ggplot(mtcars,aes(x=wt,y=mpg,alpha=cyl))+geom_point()        
+       
+       
+       # Map cyl to shape 
+ggplot(mtcars,aes(x=wt,y=mpg,shape=as.factor(cyl)))+geom_point()        
+       
+       
+       # Map cyl to labels
+ggplot(mtcars,aes(x=wt,y=mpg,label=cyl))+geom_text()   
