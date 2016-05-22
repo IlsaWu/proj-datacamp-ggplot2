@@ -20,3 +20,14 @@ ggplot(mtcars,aes(x=factor(cyl),y=mpg))+
 ## Coordinates: space on which data will be plotted
 ## Themes: non-data ink
 
+ggplot(mtcars, aes(x=wt,y=mpg))+
+  geom_point()
+
+## color dimension for continuous var
+ggplot(mtcars, aes(x=wt,y=mpg, col=disp))+
+  geom_point()
+
+## size dimension for continuous var
+ggplot(mtcars, aes(x=wt,y=mpg, size=disp))+
+  geom_point()
+
