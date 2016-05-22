@@ -12,5 +12,12 @@
 # labels: text on plot or axes
 # shape: shape of points
 
+str(mtcars)
+mtcars2 <- mtcars
+mtcars2$cyl <- as.factor(mtcars2$cyl)
+str(mtcars2)
 
-
+library(ggplot2)
+ggplot(mtcars2,aes(x=cyl,y=mpg))+geom_point()
+ggplot(mtcars2,aes(x=wt,y=mpg,col=cyl))+geom_point()
+ggplot(mtcars2, aes(x=wt,y=mpg,col=cyl))+geom_point(shape=1,size=4)
