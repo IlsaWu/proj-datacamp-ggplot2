@@ -1,0 +1,43 @@
+### Histograms and other bars
+
+## for coloring need 'fill' rather than 'col' ('col' will only do outline)
+
+### Histogram examples
+ggplot(iris,aes(x=Sepal.Width))+geom_histogram()
+## to determine binwidth based on info of 'bins=30'
+diff(range(iris$Sepal.Width))/30 # gives 0.08
+## to select different width based on number of bins
+diff(range(iris$Sepal.Width))/10 # gives 0.24
+ggplot(iris,aes(x=Sepal.Width))+geom_histogram(binwidth=0.24)
+## to get density - same shape but diff y axis
+ggplot(iris,aes(x=Sepal.Width))+geom_histogram(aes(y=..density..),binwidth=0.24)
+## identify dimensions
+ggplot(iris,aes(x=Sepal.Width, fill=Species))+geom_histogram(binwidth=0.24)
+ggplot(iris,aes(x=Sepal.Width, fill=Species))+geom_histogram(binwidth=0.24,position="stack")
+## side-by-side but not useful here because can't tell where bins begin/end
+ggplot(iris,aes(x=Sepal.Width, fill=Species))+geom_histogram(binwidth=0.24,position="dodge")
+## show stack % note y axis still says 'count' - should be proportion
+ggplot(iris,aes(x=Sepal.Width, fill=Species))+geom_histogram(binwidth=0.24,position="fill")
+
+### Bar plot examples
+str(sleep) # appears to be different sleep dataset than in datacamp!
+ggplot(sleep,aes(group))+geom_bar()
+## use diamonds instead
+str(diamonds)
+ggplot(diamonds,aes(cut))+geom_bar() # same as histogram
+ggplot(diamonds,aes(cut))+geom_bar(stat="count") # specify the statistic as 'count'
+ggplot(diamonds,aes(x=cut,y=price))+
+  geom_bar(stat="identity") # stat = identity to show y axis data
+
+### Exercises
+ggplot(mtcars,aes(x=mpg))+geom_histogram(binwidth=1)
+ggplot(mtcars,aes(x=mpg))+geom_histogram(aes(y=..density..),binwidth=1)
+myBlue <- "#377EB8"
+ggplot(mtcars,aes(x=mpg))+geom_histogram(binwidth=1,aes(y=..density..),fill=myBlue)
+
+ggplot(mtcars,aes(x=as.factor(cyl),fill=as.factor(am)))+geom_bar()
+ggplot(mtcars,aes(x=as.factor(cyl),fill=as.factor(am)))+geom_bar(position="stack")
+## set to proportion
+ggplot(mtcars,aes(x=as.factor(cyl),fill=as.factor(am)))+geom_bar(position="fill")
+## side by side
+ggplot(mtcars,aes(x=as.factor(cyl),fill=as.factor(am)))+geom_bar(position="dodge")
