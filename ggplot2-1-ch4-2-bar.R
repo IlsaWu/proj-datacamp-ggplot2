@@ -1,5 +1,5 @@
 ### Histograms and other bars
-
+library(ggplot2)
 ## for coloring need 'fill' rather than 'col' ('col' will only do outline)
 
 ### Histogram examples
@@ -41,3 +41,39 @@ ggplot(mtcars,aes(x=as.factor(cyl),fill=as.factor(am)))+geom_bar(position="stack
 ggplot(mtcars,aes(x=as.factor(cyl),fill=as.factor(am)))+geom_bar(position="fill")
 ## side by side
 ggplot(mtcars,aes(x=as.factor(cyl),fill=as.factor(am)))+geom_bar(position="dodge")
+
+posn_d <- position_dodge(0.2)
+ggplot(mtcars,aes(x=as.factor(cyl),fill=as.factor(am)))+geom_bar(position=posn_d)
+ggplot(mtcars,aes(x=as.factor(cyl),fill=as.factor(am)))+geom_bar(position=posn_d,alpha=0.6)
+
+# A basic histogram, add coloring defined by cyl 
+ggplot(mtcars, aes(mpg,fill=as.factor(cyl))) +
+  geom_histogram(binwidth = 1)
+
+# Change position to identity - stack is default
+ggplot(mtcars, aes(mpg,fill=as.factor(cyl))) +
+  geom_histogram(binwidth=1,position="identity")
+
+# Change geom to freqpoly (position is identity by default) 
+ggplot(mtcars, aes(mpg,col=as.factor(cyl))) +
+  geom_freqpoly(binwidth=1,position="identity")
+
+# Example of how to use a brewed color palette
+ggplot(mtcars, aes(x = cyl, fill = as.factor(am))) +
+  geom_bar() +
+  scale_fill_brewer(palette = "Set1")
+
+# switch to diamonds (instead of Vocab used in Datacamp)
+# Plot cut on x and color on fill
+# Use the default brewed color palette
+
+ggplot(diamonds,aes(x=cut,fill=color))+
+  geom_bar(position="fill")+
+  scale_fill_brewer()
+## will get warning message and incomplete plot if too many levels in color factor
+ggplot(diamonds,aes(x=cut,fill=as.factor(depth)))+
+  geom_bar(position="fill")+
+  scale_fill_brewer()
+
+
+
