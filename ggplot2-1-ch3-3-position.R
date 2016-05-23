@@ -33,3 +33,15 @@ mtcars$group <- 0
 head(mtcars)
 ggplot(mtcars, aes(x=mpg,y=group))+geom_jitter()
 ggplot(mtcars, aes(x=mpg,y=group))+geom_jitter()+scale_y_continuous(limits=c(-2,2))
+
+### Overplotting
+
+ggplot(mtcars,aes(x=wt,y=mpg,col=as.factor(cyl)))+geom_point(size=4)
+ggplot(mtcars,aes(x=wt,y=mpg,col=as.factor(cyl)))+geom_point(size=4,shape=1)
+ggplot(mtcars, aes(x=wt,y=mpg,col=as.factor(cyl)))+geom_point(size=4,alpha=0.6)
+
+ggplot(diamonds,aes(x=carat, y=price, col=clarity))+geom_point()
+ggplot(diamonds,aes(x=carat, y=price, col=clarity))+geom_point(alpha=0.5)
+
+ggplot(diamonds,aes(x=clarity,y=carat,col=price))+geom_point(alpha=0.5)
+ggplot(diamonds,aes(x=clarity,y=carat,col=price))+geom_point(alpha=0.5,position="jitter")
