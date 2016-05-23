@@ -75,5 +75,32 @@ ggplot(diamonds,aes(x=cut,fill=as.factor(depth)))+
   geom_bar(position="fill")+
   scale_fill_brewer()
 
+# Basic histogram plot command
+ggplot(mtcars, aes(mpg)) + 
+  geom_histogram(binwidth = 1)
+
+# Expand the histogram to fill using am - default position is stack
+ggplot(mtcars, aes(mpg,fill=as.factor(am))) + 
+  geom_histogram(binwidth = 1)
+
+# Change the position argument to "dodge"
+ggplot(mtcars, aes(mpg,fill=as.factor(am))) + 
+  geom_histogram(binwidth = 1,position="dodge")
+
+# Change the position argument to "fill" -> creates proportional stack adding up to 1
+ggplot(mtcars, aes(mpg,fill=as.factor(am))) + 
+  geom_histogram(binwidth = 1,position="fill")
+
+# Change the position argument to "identity" and set alpha to 0.4
+ggplot(mtcars, aes(mpg,fill=as.factor(am))) + 
+  geom_histogram(binwidth = 1,position="identity",alpha=0.4)
 
 
+# Change fill to cyl
+ggplot(mtcars, aes(mpg,fill=as.factor(cyl))) + 
+  geom_histogram(binwidth = 1,position="identity",alpha=0.4)
+# back to stack default - seems most useful to me
+ggplot(mtcars, aes(mpg,fill=as.factor(cyl))) + 
+  geom_histogram(binwidth = 1,position="stack")
+ggplot(mtcars, aes(mpg,fill=as.factor(cyl))) + 
+  geom_histogram(binwidth = 1,position="fill")
