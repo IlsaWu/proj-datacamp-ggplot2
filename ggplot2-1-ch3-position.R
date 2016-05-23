@@ -29,4 +29,7 @@ cyl.am +
 
 ## Univariate plots
 ggplot(mtcars,aes(x=mpg))+geom_point() # error because need to specify y
-
+mtcars$group <- 0
+head(mtcars)
+ggplot(mtcars, aes(x=mpg,y=group))+geom_jitter()
+ggplot(mtcars, aes(x=mpg,y=group))+geom_jitter()+scale_y_continuous(limits=c(-2,2))
