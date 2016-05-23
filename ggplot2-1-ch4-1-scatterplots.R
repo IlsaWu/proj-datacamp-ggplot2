@@ -37,5 +37,12 @@ posn.j<- position_jitter(0.1) # reusable object
 ggplot(mtcars,aes(x=cyl,y=wt))+geom_jitter(position=posn.j)
 ggplot(mtcars,aes(x=cyl,y=wt))+geom_point(position=posn.j)
 
+### Use Vocab dataset from car package
+library(car)
+str(Vocab)
+head(Vocab)
 
-
+ggplot(Vocab,aes(x=education,y=vocabulary))+geom_point()
+ggplot(Vocab,aes(x=education,y=vocabulary))+geom_jitter()
+ggplot(Vocab,aes(x=education,y=vocabulary))+geom_jitter(alpha=0.2)
+ggplot(Vocab,aes(x=education,y=vocabulary))+geom_jitter(alpha=0.2,shape=1)
