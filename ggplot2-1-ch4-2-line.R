@@ -37,3 +37,12 @@ str(recess)
 ggplot(economics, aes(x = date, y = unemploy/pop)) +
   geom_line()+
   geom_rect(data=recess,inherit.aes=FALSE,aes(xmin=begin,xmax=end,ymin=-Inf,ymax=+Inf),fill="red",alpha=0.2)
+
+## use Hartnagel crime data in car package
+## needs to be manipulated to make tidy and then filtered
+library(car)
+library(tidyr)
+library(dplyr)
+hn.tidy <- gather(Hartnagel,Type,Commit,-year)
+hn2 <- filter(hn.tidy,Type=="ftheft"|Type=="mconvict"|Type=="mtheft")
+ggplot(hn2,aes(x=year,y=Commit,col=Type))+geom_line()
