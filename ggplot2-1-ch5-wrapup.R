@@ -19,7 +19,8 @@ head(ChickWeight)
 ggplot(ChickWeight,aes(x=Time,y=weight,col=Chick))+geom_line()
 ggplot(ChickWeight,aes(x=Time,y=weight))+geom_line(aes(group=Chick))
 ggplot(ChickWeight,aes(x=Time,y=weight,col=Diet))+geom_line(aes(group=Chick))
-ggplot(ChickWeight,aes(x=Time,y=weight,col=Diet))+geom_line(aes(group=Chick),alpha=0.3)+geom_smooth(lwd=2,se=FALSE)
+ggplot(ChickWeight,aes(x=Time,y=weight,col=Diet))+geom_line(aes(group=Chick),alpha=0.3)+
+  geom_smooth(lwd=2,se=FALSE)
 
 ## add further elements to clean-up etc
 plot1 <- ggplot(ChickWeight,aes(x=Time,y=weight,col=Diet))+geom_line(aes(group=Chick),alpha=0.3)+geom_smooth(lwd=2,se=FALSE)
